@@ -18,6 +18,9 @@ chi6=np.loadtxt('data/chi6.dat')
 chi2_250=np.loadtxt('data/chi2_250.dat')
 chi4_250=np.loadtxt('data/chi4_250.dat')
 chi6_250=np.loadtxt('data/chi6_250.dat')
+chi2_250062=np.loadtxt('data/chi2_250062.dat')
+chi4_250062=np.loadtxt('data/chi4_250062.dat')
+chi6_250062=np.loadtxt('data/chi6_250062.dat')
 hotQCDR42=np.loadtxt('data/hotQCD_R42.dat')
 WBR42=np.loadtxt('data/WB_R42.dat')
 hotQCDR62=np.loadtxt('data/hotQCD_R62.dat')
@@ -28,14 +31,17 @@ R42=chi4/chi2
 R62=chi6/chi2
 R42_250=chi4_250/chi2_250
 R62_250=chi6_250/chi2_250
+R42_250062=chi4_250062/chi2_250062
+R62_250062=chi6_250062/chi2_250062
 #T1=T/177
 # Create figure
 fig=plt.figure(figsize=(9., 3.5))
 #fig=plt.figure()
 ax1=fig.add_subplot(121)
 
-ax1.plot(T,R42,'k-',linewidth=2,markersize=5,label=r'$FRG,Tc=225$')
-ax1.plot(T,R42_250,'c-',linewidth=2,markersize=5,label=r'$FRG,Tc=250$')
+ax1.plot(T,R42,'k-',linewidth=2,markersize=5,label=r'$FRG,Tc=225,\alpha=0.57$')
+ax1.plot(T,R42_250,'c-',linewidth=2,markersize=5,label=r'$FRG,Tc=250,\alpha=0.57$')
+ax1.plot(T,R42_250062,'m-',linewidth=2,markersize=5,label=r'$FRG,Tc=250,\alpha=0.62$')
 ax1.fill_between(hotQCDR42[:,0],hotQCDR42[:,1]+hotQCDR42[:,2],hotQCDR42[:,1]-hotQCDR42[:,2],alpha=0.25,facecolor='green',edgecolor='',label=r'HotQCD')
 ax1.errorbar(WBR42[:,0],WBR42[:,1],yerr=WBR42[:,2],color='blue',marker='o',linestyle='',linewidth=2,markersize=5,fillstyle='none',alpha=1,label=r'Wuppertal-Budaspest')
 ax1.axis([100,200,0.,1.2])
