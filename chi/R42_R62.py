@@ -24,6 +24,12 @@ chi6_250052=np.loadtxt('data/chi6_250052.dat')
 chi2_250062=np.loadtxt('data/chi2_250062.dat')
 chi4_250062=np.loadtxt('data/chi4_250062.dat')
 chi6_250062=np.loadtxt('data/chi6_250062.dat')
+chi2e=np.loadtxt('data/chi2e.dat')
+chi4e=np.loadtxt('data/chi4e.dat')
+chi6e=np.loadtxt('data/chi6e.dat')
+chi2_225062=np.loadtxt('data/chi2225062.dat')
+chi4_225062=np.loadtxt('data/chi4225062.dat')
+chi6_225062=np.loadtxt('data/chi6225062.dat')
 hotQCDR42=np.loadtxt('data/hotQCD_R42.dat')
 WBR42=np.loadtxt('data/WB_R42.dat')
 hotQCDR62=np.loadtxt('data/hotQCD_R62.dat')
@@ -38,6 +44,10 @@ R42_250052=chi4_250052/chi2_250052
 R62_250052=chi6_250052/chi2_250052
 R42_250062=chi4_250062/chi2_250062
 R62_250062=chi6_250062/chi2_250062
+R42_225062=chi4_225062/chi2_225062
+R62_225062=chi6_225062/chi2_225062
+R42e=chi4e/chi2e
+R62e=chi6e/chi2e
 #T1=T/177
 # Create figure
 fig=plt.figure(figsize=(9., 3.5))
@@ -45,12 +55,14 @@ fig=plt.figure(figsize=(9., 3.5))
 ax1=fig.add_subplot(121)
 
 ax1.plot(T,R42,'k-',linewidth=2,markersize=5,label=r'$FRG,Tc=225,\alpha=0.57$')
-ax1.plot(T,R42_250,'c-',linewidth=2,markersize=5,label=r'$FRG,Tc=250,\alpha=0.57$')
-ax1.plot(T,R42_250052,'y-',linewidth=2,markersize=5,label=r'$FRG,Tc=250,\alpha=0.52$')
-#ax1.plot(T,R42_250062,'m-',linewidth=2,markersize=5,label=r'$FRG,Tc=250,\alpha=0.62$')
+ax1.plot(T,R42_250,'c--',linewidth=2,markersize=5,label=r'$FRG,Tc=250,\alpha=0.57$')
+ax1.plot(T,R42_250052,'g--',linewidth=2,markersize=5,label=r'$FRG,Tc=250,\alpha=0.52$')
+ax1.plot(T,R42_250062,'k--',linewidth=2,markersize=5,label=r'$FRG,Tc=250,\alpha=0.62$')
+ax1.plot(T,R42_225062,'y-',linewidth=2,markersize=5,label=r'$FRG,Tc=225,\alpha=0.62$')
+ax1.plot(T,R42e,'m-',linewidth=2,markersize=5,label=r'$FRG,poly$')
 ax1.fill_between(hotQCDR42[:,0],hotQCDR42[:,1]+hotQCDR42[:,2],hotQCDR42[:,1]-hotQCDR42[:,2],alpha=0.25,facecolor='green',edgecolor='',label=r'HotQCD')
 ax1.errorbar(WBR42[:,0],WBR42[:,1],yerr=WBR42[:,2],color='blue',marker='o',linestyle='',linewidth=2,markersize=5,fillstyle='none',alpha=1,label=r'Wuppertal-Budaspest')
-ax1.axis([100,200,0.,1.2])
+ax1.axis([100,200,-0.6,1.2])
 
 ax1.set_xlabel('$T [\mathrm{MeV}]$', fontsize=14, color='black')
 ax1.set_ylabel('$\chi^B_4/\chi^B_2$', fontsize=14, color='black')

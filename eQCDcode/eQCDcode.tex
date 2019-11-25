@@ -1,0 +1,304 @@
+\documentclass[12pt]{ctexart}
+\usepackage{color}
+\usepackage{multicol,ifthen,booktabs,amsmath,amsfonts,bm,mathrsfs,amssymb}
+\usepackage{times,mathptmx}
+\usepackage{braket}
+\usepackage{enumerate}
+\usepackage{geometry}
+\usepackage{graphicx}% Include figure files
+\usepackage{listings}
+\renewcommand\baselinestretch{1.5}\protect
+\abovedisplayshortskip 3 pt
+\belowdisplayshortskip 3 pt
+\geometry{left=2cm,right=2cm,top=3cm,bottom=3cm}
+\graphicspath{{./figures/}{./}}
+\begin{document}
+\section{eQCD程序及2+1味扩展}
+
+\subsection{eQCD跑动的流:}
+
+eQCD程序中考虑的流方程变量：
+\begin{equation}
+U_k(\rho),h_k,Z_{\phi,k},Z_{\psi,k},Z_{A,k},g_{\bar{l} A l},g_{AAA},g_{\bar{s} A s}, c ,\kappa
+\end{equation}
+其中$\rho=\sigma^2/2$，此外，还有
+\begin{equation}
+Z_\phi(p=0)
+\end{equation}
+用来确定介子的pole 质量用。
+
+注：程序中跑动的是重整化后的物理量，重正化系数只通过$\eta$耦合进其它物理量。
+
+扩展到2+1味：
+\begin{equation}
+U_k(\rho_1,\rho_2),h_{l,k},h_{s,k},Z_{\pi,k},Z_{K,k},Z_{l,k},Z_{s,k},Z_{A,k},g_{\bar{l} A l},g_{AAA},g_{\bar{s} A s}, j_l,j_s,c_k (\text{t' Hooft term}),\sigma_{l,0},\sigma_{s,0}
+\end{equation}
+其中$\rho_1=\frac{1}{2}(\sigma_l^2+\sigma_s^2),\rho_2=\frac{1}{24}(\sigma_l^2-2 \sigma_s^2)^2$, 这里我们先做近似：
+\begin{equation}
+\begin{split}
+h_{l,k}&=h_{s,k}=h_k \\
+Z_{\pi,k}&=Z_{K,k}=Z_{\phi,k}\\
+Z_{l,k}&=Z_{s,k}=Z_{\psi,k}
+\end{split}
+\end{equation}
+此外，我们暂时还做如下近似：
+\begin{enumerate}[1.]
+\item $c_k=0$;
+
+\item  流方程中我们暂时只考虑$\pi$和$\sigma$介子。但其质量依然按照2+1味低能有效模型方式计算。
+\end{enumerate}
+
+\subsection{初始条件:}
+
+(此部分对应程序initial.f90)
+
+我们取$\Lambda=20GeV$,介子场势的初始条件：
+\begin{equation}
+U_\Lambda=\nu \rho -c \sigma
+\end{equation}
+这样
+\begin{equation}
+\sigma_0=c/\nu \quad \kappa_0=\frac{1}{2}\sigma_0^2
+\end{equation}
+
+扩展到2+1味：
+\begin{equation}
+U_\Lambda=\nu \rho_1 -j_l \sigma_l -j_s \sigma_s
+\end{equation}
+\begin{equation}
+\sigma_{l,0}=jl/\nu \quad \sigma_{s,0}=js/\nu
+\end{equation}
+
+其它参量初始条件：
+\begin{enumerate}[1.]
+\item $h_\Lambda=1$, 任意选取，不影响最终结果?
+
+\begin{figure}[h]
+\includegraphics[width=0.5\textwidth]{yukawa}
+\end{figure}
+ Jens Braun, Leonard Fister, Jan M. Pawlowski, Fabian Rennecke;arXiv:1412.1045
+
+\item $Z_{\Phi,\Lambda}=1$,$\Phi$表示所有的场。
+
+\item $g_{\bar{l} A l,\Lambda}=g_{AAA,\Lambda}=g_{\bar{s} A s,\Lambda}=g$, $g=\sqrt{4\pi \alpha_{s,\Lambda}}$ ,程序这里取$\alpha_{s,\Lambda}=0.235$。
+\end{enumerate}
+
+\subsection{流方程:}
+
+(此部分主要对应程序derivs.f90。相关的程序有thresholdfunc.f90 (计算阈值函数);
+fun.f90, nfdx\_com.f90, nfdx.f90 (计算分布函数); IRenhan.f90 (考虑红外增强)。以及数值计算方面程序:odeint.f90(求解微分方程的), GAULEG.f90(高斯法计算积分的))
+
+按顺序计算如下物理量：
+
+\begin{enumerate}[1.]
+
+\item 参数传入。注：$g=g_{\bar q A q}$。
+
+\item 计算介子和夸克的曲率质量，通过：
+\begin{equation}
+\bar m_\pi ^2=\frac{U_k'(\rho)}{k^2 Z_{\phi,k}} ,\quad \bar m_\sigma ^2= \frac{U_k'(\rho)+2 \rho U_k''(\rho)} {k^2 Z_{\phi,k}} ,\quad \bar m_q^2=\frac{h_k^2 \rho}{2 k^2 Z_{q,k}^2}
+\end{equation}
+以及介计算了子和夸克质量关于$\rho$的各阶导数。
+
+对于奇异夸克，程序中暂时做了$m_s=m_l+120[MeV]$的近似。
+
+扩展到2+1味：介子质量，轻、奇异夸克的质量将完全由$U(\rho_1,\rho_2)$和$h,\sigma_l,\sigma_s$给出。暂时只考虑$\pi$和$\sigma$介子。
+
+注：为了数值稳定，程序中做了$m_\pi \neq m_\sigma$的处理。
+
+\item 计算胶子，正反奇异夸克，正反轻夸克，以及$\pi$和$\sigma$介子的分布函数，以及分布函数关于x的偏导。x指的是$E_\Phi \pm \mu$，其中$E_\Phi$是$\Phi$场的能量。
+
+正反夸克的分布函数替换成Polyakov扩展的费米子分布。
+
+\item 拥有了质量和分布函数，原则上文章附录N的阈值函数都可以进行计算了，它们主要在thresholdfunc.f90 进行计算并通过common传回derivs.f90。在下面的步骤中，它们需要计算时，调用thresholdfunc.f90即可。故不再详述。
+
+\item 导入参数化的0温的胶子和鬼场的反常量纲：$\eta_{A,\textrm{vac}}^{\text{QCD}}$ (etaAT0) (fun.f90/etaA\_unqQCD\_T0\_fun) 和 etacT0 (fun.f90/etac\_YM\_T0\_fun)
+
+\item 计算$\eta_\phi$(etaphi)：这里$\eta_\phi(p_0=0;|\vec{p}|=k)$。利用文中附录式(I2) 以及附录式(J1)联合求解出来。
+
+\begin{figure}[h]
+\includegraphics[width=0.5\textwidth]{etaphi}
+\end{figure}
+
+这里面式(I2)有一个关于$d x$和$d\cos(\theta)$的二重积分需要提前计算一下。
+
+此外，$\mathcal{BB}_{(2,2)}$项前面有个因子$\bar{\rho}_{k}\bar{V}^{''}_{k}$,
+是$\pi \pi \sigma$相互作用顶点，推广到2+1味应作相应替换。
+
+\item 计算$\eta_\psi$(etapsi)，可以用图表示：
+
+\begin{figure}[h]
+\includegraphics[width=0.5\textwidth]{h2point}
+\end{figure}
+
+具体表达式为附录式(J1)。
+
+注：这里和上一步里面的$\eta_A$都用的是0温结果(etaAT0)。
+
+注：这里对真空部分的费米子外动量做了修正$P_{0,ex}$(p0c)。
+
+\item 计算$\eta_A$(etaA):
+
+\begin{figure}[h]
+\includegraphics[width=0.7\textwidth]{etaA}
+\end{figure}
+
+\begin{equation}
+\eta_{A}=\eta_{A,\textrm{vac}}^{\text{QCD}}+
+             \Delta\eta_{A}^{\text{glue}}+
+             \Delta\eta_{A}^{q}
+\end{equation}
+其中：$\eta_{A,\textrm{vac}}^{\text{QCD}}$为先前参数引入的。它实际上是一个2味的信息，即$\eta_{A,\textrm{vac}}^{\text{QCD}}|_{N_f=2}$，扩展到2+1味，需要论文中式(102)：
+\begin{equation}
+  \eta_{A,\textrm{vac}}^{\text{QCD}}=\left.
+    \eta_{A,\textrm{vac}}^{\text{QCD}}\right|_{N_f=2}+
+    \eta^s_{A,\textrm{vac}}
+\end{equation}
+
+第三项$\Delta\eta_{A}^{q}$包含轻夸克圈和奇异夸克圈的贡献，由附录式(H1,H2)计算。附录式(H1) 也有一个关于$d x$ 和$d\cos(\theta)$的二重积分需要提前计算。
+
+程序中把奇异夸克有限温和0温的贡献放一起了：
+\begin{lstlisting}[frame=shadowbox]
+etaA_QL_s=etaA_QL_s+etaA_QL_s_T0
+etaA=etaAT0+etaA_QL+etaA_QL_s
+\end{lstlisting}
+
+$\Delta\eta_{A}^{\text{glue}}$通过引入质量屏蔽(IRenhan.f90/massAScreen)来修正。
+
+\item 计算$\partial_t g_{A^3}$ (dtg3A), $\partial_t g_{\bar q A q}$ (dtg), $\partial_t g_{\bar q_s A q_s}$ (dtg\_qbAq\_s)。
+用图表示：
+\begin{figure}[h]
+\includegraphics[width=0.5\textwidth]{gluon3}
+\end{figure}
+
+首先考虑计算轻夸克胶子顶点$\partial_t g_{\bar q A q}$ (dtg)，它具体计算可参考附录M：
+\begin{equation} \partial_t g_{\bar{l}Al}
+    = \left( \frac12\eta_A+\eta_q\right)
+      g_{\bar{l}A l}\quad +\bigg( {\color{red}N_f}\, \overline{\textrm{Flow}}^{(3),A}_{(\bar l A
+      l)} + \overline{\textrm{Flow}}^{(3),\phi}_{{(\bar q A
+      q)}}\bigg)\bigg|_{N_f=2}\,.
+\end{equation}
+式中的$\overline{\textrm{Flow}}^{(3),A}_{(\bar l A l)}$ (胶子贡献)和
+$\overline{\textrm{Flow}}^{(3),\phi}_{(\bar q A q)}$(介子贡献)由式(M2,M3)给出。
+
+奇异夸克胶子顶点：对于奇异夸克，由于没有引入对应组成的奇异介子如($K,\kappa$)，所以只需要考虑胶子部分的贡献：
+\begin{equation}
+  \partial_t g_{\bar{s}As}=\left( \frac12\eta_A+\eta_q\right)
+                             g_{\bar{s}As}  +
+                             \overline{\textrm{Flow}}^{(3),A}_{(\bar s A s)}
+\end{equation}
+论文中的公式C2。$\overline{\textrm{Flow}}^{(3),A}_{(\bar s A s)}$仍然由式(M2)计算。
+
+2+1味扩展时，奇异介子引入后这部分应作相应调整。
+
+最后计算$\partial_t g_{A^3}$ (dtg3A)，它分成有限温部分和0温部分
+\begin{equation}
+\partial_t g_{A^3}=\partial_t g_{A^3，vac}+\partial_t \Delta g_{A^3}
+\end{equation}
+而且有限温部分采取近似:
+\begin{equation}
+\partial_t \Delta g_{A^3} = \partial_t \Delta g_{\bar q A q}
+\end{equation}
+
+0温贡献由Jens Braun, Leonard Fister, Jan M. Pawlowski, Fabian Rennecke; arXiv:1412.1045的公式(67)给出。其中的鬼胶子顶点：$g_{\bar c A c}=g_{\bar q A q}$(gccA=g)，鬼场传播子的反常量纲由0温结果近似。
+
+问：{\color{red}0温贡献不也是温度依赖了吗?(gccA=g)}
+
+注：轻夸克胶子顶点程序前面系数$N_f$应该去掉。程序是对的。
+
+\begin{lstlisting}[frame=shadowbox]
+dtg=((etaA + 2*etapsi)*g)/2.+dtg_gluon+dtg_meson
+\end{lstlisting}
+问：{\color{red}\text{(dtg\_gluon\_T)}=\text{(dtg\_gluon)}?}
+
+注：红外增强(IRenhan.f90/IRenha)：
+\begin{equation}
+  \partial_{t} \bar{g}_{\bar q A q} \rightarrow
+  \bar{g}_{\bar q A q}\, \partial_{t} \varsigma_{a,b}(k)
+  +\varsigma_{a,b}(k)  \partial_{t} \bar{g}_{\bar q A q}\,,
+\end{equation}
+这里有个手动引入的参数$a(IRstrength)=0.034$来调节组分夸克质量。
+
+\item 计算动力学强子化$\dot{\bar A} $(dtA)方程:
+\begin{equation}
+\dot{\bar A}=-\frac{1}{\bar{h}}\,\overline{
+                \textrm{Flow}}^{(4)}_{(\bar q\tau q)(\bar q\tau q)}\,.
+\end{equation}
+四费米子的流$\overline{\textrm{Flow}}^{(4)}_{(\bar q\tau q)(\bar q\tau q)}$（程序中dtlam4)可通过下图计算
+\begin{figure}[h]
+\includegraphics[width=0.5\textwidth]{4quark}
+\end{figure}
+
+目前，我们忽略了介子胶子混合的情况，也就是忽略掉最后一行。
+
+图第一行的交换胶子$\overline{\textrm{Flow}}^{(4),A}_{(\bar q q)(\bar q q)}$ (dtlam4\_gluon)文章附录的公式(L1)计算。
+
+图第二行的交换介子$\overline{\textrm{Flow}}^{(4),\phi}_{(\bar q q)(\bar q q)}$ (dtlambdaSigmaPion)文章附录的公式(L2)计算。
+
+\item 计算$\partial_t \bar{h} $(dhdt)，
+
+\begin{align}
+  \partial_t \bar{h}=\left( \frac12 \eta_{\phi}+\eta_{q}\right)\,\bar{h}-
+    \bar m^2_\pi\,\dot{\bar{A}}+
+    \frac{1}{\bar \sigma}\mathrm{Re} \,
+    \overline{\textrm{Flow}}^{(2)}_{\bar q \tau^0 q}
+\end{align}
+$\overline{\textrm{Flow}}^{(2)}_{\bar q \tau^0 q}$对应表达式见附录(K1),图为：
+
+\begin{figure}[h]
+\includegraphics[width=0.5\textwidth]{h2point}
+\end{figure}
+
+当然也可以用下式来计算：
+\begin{equation}
+\partial_t \bar{h}=\left( \frac12 \eta_{\phi}+\eta_{q}\right)\,\bar{h}-
+    {\color{red} \bar m^2_\pi}\,\dot{\bar{A}}+
+    \overline{\textrm{Flow}}^{(3)}_{  (\bar q \bm\tau q) \bm\pi}
+\end{equation}
+
+$\overline{\textrm{Flow}}^{(3)}_{  (\bar q \bm\tau q) \bm\pi}$图表示出来：
+
+\begin{figure}[h]
+\includegraphics[width=0.5\textwidth]{h3point}
+\end{figure}
+
+{\color{red} 问：$\bar m^2_\pi\sim U_k'(\rho)/k^2$，这里实际上是不是$U_k'(\rho)/k^2$?}
+
+\item 利用已知的$\eta_\phi,\eta_\psi,\eta_A$，通过
+\begin{equation}
+\eta_{\Phi,k}=-\frac{\partial_t Z_{\Phi,k}}{Z_{\Phi,k}}
+\end{equation}
+计算$Z_\phi,Z_\psi,Z_A$的流方程。
+
+\item 计算介子势$U_k(\rho)$的流方程:
+\begin{equation}
+	\partial_t U_k(\rho) =\frac{k^4}{4 \pi^2} \{ 3 l_0^B(m_{\pi,k},\eta_{\phi,k} ; T)+l_0^B(m_{\sigma,k},\eta_{\phi,k}; T) -4N_c N_f l_0^F(m_{q,k},\eta_{q,k};T,\mu)\}
+\end{equation}
+
+及流方程两侧关于$\rho$的各阶导数。$l_0^{B/F}$是阈值函数。
+
+扩展到2+1味：
+\begin{equation}
+\begin{split}
+	\partial_t U_k(\rho_1,\rho_2) &=\frac{k^4}{4 \pi^2} \{ 3 l_0^B(m_{\pi,k},\eta_{\phi,k} ; T)+l_0^B(m_{\sigma,k},\eta_{\phi,k}; T)\\
+&-4N_c (2 l_0^F(m_{l,k},\eta_{q,k};T,\mu)+l_0^F(m_{s,k},\eta_{q,k};T,\mu))\}
+\end{split}
+\end{equation}
+及流方程两侧关于$\rho_1,\rho_2$的各阶导数。
+
+\item 计算$U_k(\rho)$的泰勒展开系数以及展开点的流方程。这部分计算与QM模型的物理点展开相同。并将所有计算的流方程传给dydx。
+
+\end{enumerate}
+
+\subsection{其它程序:}
+\begin{enumerate}
+\item 主程序eQCD.f90主要控制温度，化学势(输入)和各个物理量的输出。总的控制整个程序。
+\item chebft.f90是用来计算涨落的。
+\item selfEQ.f90, PolyakovEq.f90, dtVdiff1.f90以及eta.f90 和数值计算的newt.f90(牛顿法求最小值), intLin.f90(计算插值),GAULEG.f90(高斯法计算积分的)都是用来自洽的求解$Polyakov$圈的：
+    \begin{equation}
+    \frac{\partial V_{total}}{\partial L}=\frac{\partial V_{total}}{\partial \bar L}=0
+    \end{equation}
+\item FRG.f90给出流方程结构和红外、紫外的取值，并串联起初始条件，微分方程和物理值计算。
+\item phypoint.f90计算红外处各个物理量。这些量最终一层层传递给主程序。
+\end{enumerate}
+\end{document}
