@@ -12,9 +12,12 @@ mpl.style.use('classic')
 
 # Data for plotting
 T=np.loadtxt('data/TMeV.dat')
-chi2_225062=np.loadtxt('data/chi2_250.dat')
-chi4_225062=np.loadtxt('data/chi4_250.dat')
-chi6_225062=np.loadtxt('data/chi6_250.dat')
+chi2_250057=np.loadtxt('data/chi2_250.dat')
+chi4_250057=np.loadtxt('data/chi4_250.dat')
+chi6_250057=np.loadtxt('data/chi6_250.dat')
+chi2Z=np.loadtxt('Z250057/chi2.dat')
+chi4Z=np.loadtxt('Z250057/chi4.dat')
+chi6Z=np.loadtxt('Z250057/chi6.dat')
 hotQCDR42=np.loadtxt('data/hotQCD_R42.dat')
 WBT=np.loadtxt('../data1/WB_chix.dat')
 WBR42=np.loadtxt('../data1/WB_R42.dat')
@@ -26,15 +29,18 @@ hotQCDR62=np.loadtxt('data/hotQCD_R62.dat')
 hotQCDb=np.loadtxt('data/hotQCDR62_b.dat')
 hotQCDg=np.loadtxt('data/hotQCDR62_g.dat')
 
-R42_225062=chi4_225062/chi2_225062
-R62_225062=chi6_225062/chi2_225062
+R42_250057=chi4_250057/chi2_250057
+R62_250057=chi6_250057/chi2_250057
+R42Z=chi4Z/chi2Z
+R62Z=chi6Z/chi2Z
 #T1=T/177
 # Create figure
 fig=plt.figure(figsize=(9., 3.5))
 #fig=plt.figure()
 ax1=fig.add_subplot(121)
 
-ax1.plot(T,R42_225062,'k-',linewidth=2,markersize=5,label=r'$FRG,Tc=250,\alpha=0.57$')
+ax1.plot(T,R42_250057,'k-',linewidth=2,markersize=5,label=r'$FRG,Tc=250,\alpha=0.57$')
+ax1.plot(T,R42Z,'r-',linewidth=2,markersize=5,label=r'$FRG,Tc=250,\alpha=0.57$')
 ax1.fill_between(hotQCDR42[:,0],hotQCDR42[:,1]+hotQCDR42[:,2],hotQCDR42[:,1]-hotQCDR42[:,2],alpha=0.25,facecolor='green',edgecolor='',label=r'HotQCD')
 ax1.errorbar(WBR42[:,0],WBR42[:,1],yerr=WBR42[:,2],color='blue',marker='o',linestyle='',linewidth=2,markersize=5,fillstyle='none',alpha=1,label=r'Wuppertal-Budaspest')
 ax1.axis([100,200,0.,1.2])
@@ -51,7 +57,8 @@ for label in ax1.yaxis.get_ticklabels():
 
 ax2=fig.add_subplot(122)
 
-ax2.plot(T,R62_225062,'k-',linewidth=2,markersize=5,label=r'$FRG$')
+ax2.plot(T,R62_250057,'k-',linewidth=2,markersize=5,label=r'$FRG$')
+ax2.plot(T,R62Z,'r-',linewidth=2,markersize=5,label=r'$FRG$')
 ax2.fill_between(hotQCDR62[:,0],hotQCDR62[:,1],hotQCDR62[:,2],alpha=0.4,facecolor='gray',edgecolor='',label=r'HotQCD cont. est')
 ax2.errorbar(WBT,WBR62,yerr=WBchi6err/WBchi2,color='blue',marker='o',linestyle='',linewidth=2,markersize=5,fillstyle='none',alpha=1,label=r'Wuppertal-Budaspest')
 #ax2.errorbar(hotQCDb[:,0],hotQCDb[:,1],yerr=hotQCDb[:,2],color='blue',marker='s',linestyle='',linewidth=2,markersize=5,alpha=1,label=r'$N_\tau=8$')
