@@ -18,6 +18,9 @@ chi6_250057=np.loadtxt('data/chi6_250.dat')
 chi2Z=np.loadtxt('Z250057/chi2.dat')
 chi4Z=np.loadtxt('Z250057/chi4.dat')
 chi6Z=np.loadtxt('Z250057/chi6.dat')
+chi2Zn=np.loadtxt('Z250057n/chi2.dat')
+chi4Zn=np.loadtxt('Z250057n/chi4.dat')
+chi6Zn=np.loadtxt('Z250057n/chi6.dat')
 hotQCDR42=np.loadtxt('data/hotQCD_R42.dat')
 WBT=np.loadtxt('../data1/WB_chix.dat')
 WBR42=np.loadtxt('../data1/WB_R42.dat')
@@ -31,8 +34,8 @@ hotQCDg=np.loadtxt('data/hotQCDR62_g.dat')
 
 R42_250057=chi4_250057/chi2_250057
 R62_250057=chi6_250057/chi2_250057
-R42Z=chi4Z/chi2Z
-R62Z=chi6Z/chi2Z
+R42Z=chi4Zn/chi2Zn
+R62Z=chi6Zn/chi2Zn
 #T1=T/177
 # Create figure
 fig=plt.figure(figsize=(9., 3.5))
