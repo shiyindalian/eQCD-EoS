@@ -1,0 +1,58 @@
+脚本并行使用说明：
+
+想法就是通过m1.dat将变化的参数传入（读取）到fortarn程序中，通过外部脚本实现并行。
+
+1.主程序修改
+2.提交与运行
+
+1.主程序修改
+在eQCD.f90中将有关化学势部分替换为
+
+  open(unit=11,file='./m1.dat')
+  read(11,*) munum
+  close (11)
+  write(*,*)'load OK',munum
+
+  muBi=10*real(munum)/hc
+
+位置在
+！  do i=0, iTmax
+！	T_res(i)=Ti+dT*real(i)    !fm**(-1)
+！  end do
+
+  open(unit=11,file='./m1.dat')
+  read(11,*) munum
+  close (11)
+  write(*,*)'load OK',munum
+
+  muBi=10*real(munum)/hc
+
+!  sigma_UV=1.94d-2/hc
+!  sigma_UV=3.03d-2/hc
+！  sigma_UV=2.8d-2/hc
+区间
+同时，添加变量
+ integer munum
+保存。
+将buffer中内容清空。
+将要并行的程序所在文件夹重命名为exam。
+
+新建一个文件夹，将exam，run.sh，TT.sh移入其中，为方便描述，下文叫此文件夹为AA，并在AA里面新建个data来存放最终数据。
+
+2.提交与运行
+
+尹诗电脑当前IP：10.7.40.79
+终端运行code:
+scp -r AA wjfu2@10.7.40.79:~            （复制AA到尹诗服务器上）
+ssh wjfu2@10.7.40.79                          （登入尹诗服务器）
+cd AA                                                   （跳转到AA文件夹下）
+./run.sh                                                  （编译和后台开始运行，终端5-6分钟后屏幕不再输出后，可关闭终端，此后程序在尹诗那边运行，这边关机什么的不影响）
+
+第二天
+
+ssh wjfu2@10.7.40.79                          （登入尹诗服务器）
+top                                                        (查看是否运行完成，无exe为完成）
+exit                                                     （退出尹诗服务器）
+scp -r wjfu2@10.7.40.79:~/AA .              (将计算结果拷回自己电脑）
+cd AA                                                     （跳转到AA文件夹下）
+./TT.sh                                                   (把数据都汇总到data下）

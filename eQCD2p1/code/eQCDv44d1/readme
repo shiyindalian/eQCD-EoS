@@ -1,0 +1,60 @@
+This version solves the FRG equations in a Taylor expansion with fixed point, and tune the expansion point automatically.
+ Calculating different temperature and chemical potential points. 
+We reduce Nv to Nv=5.
+Calculate baryon number fluctuations.
+Double precision.
+We change the integral variable k to t.
+we expand chemical potential with mu^2.
+PQM
+Self-consistent calculations.
+full parameters.
+p0=sqrt((pi*(T-1./hc)*exp(-k/T/5.)+pi*1./hc)**2+k**2)
+expand chemical potential with mu.
+symmetric with mu and -mu.
+new full parameter
+Chebyshev Approximation improved.
+gluon included.
+modified first step.
+new four-fermion interaction flow from gluons 4/12/2017
+new four-fermion interaction flow from Yukawa coupling 5/17/2017
+new quark-gluon interaction flow from gluons 6/5/2017
+new quark-gluon interaction flow from Yukawa coupling 6/5/2017
+Clear 6/10/2017
+Finite temperature 6/18/2017
+p0c=sqrt((pi*(T-1./hc)*exp(-k/T/5.)+pi*1./hc)**2+k**2) 7/10/2017
+Add the frequency dependence of the quark loop for the meson wave function renormalization 8/1/2017
+modify the anomalous dimensions 10/2/2017
+modify p0c 10/5/2017
+extract maximal alphas 10/6/2017
+recalculate threshold functions 11/17/2017
+etaA modified 11/24/2017
+identical Taylor expansion point 11/28/2017
+add gluon screening mass 12/2/2017
+Taylor expansion with physical points 12/3/2017
+modify Zphi 12/5/2017
+subtract the gluon mass at zero temperature. 12/10/2017
+gluon propagator updated. 3/26/2018
+T0=235, alpha=0.75 in the glue potential. 4/1/2018
+gluon loop added.4/26/2018
+quark loop modified. 6/3/2018
+temperature dependent YM gluon propagator. 6/12/2018
+quark loop for the gluon anomalous dimension with p0=0. 6/13/2018
+log formalism for the glue potential. 6/18/2018
+IR enhancement adjusted 6/30/2018
+ghost included 10/2/2018
+gluon anomalous threshold function computation improved 10/12/2018
+gluon anomalous dimension tested further 10/27/2018
+gluon anomalous dimension modified 11/3/2018
+different strong coupling running 11/5/2018
+three gluon loop updated 11/8/2018
+gluon input at finite temperature 11/8/2018
+IR enhancement updated 11/9/2018
+strange quark included 12/13/2018
+rescale 3/4->1 2+1 flavor 3/22/2018
+no suppresion for etaphi 5/14/2019
+further running for c and nonvanishing external momentum for etaphi   5/29/2019
+fixed point expansion 5/31/2019
+etaphi(p=0) 6/5/2019
+physical expansion point, etaphi(p=k) 6/8/2019
+etaphi(p=0) and etaphi(p=k) combined  6/15/2019
+potential for Nf=2+1 added 12/26/2019
