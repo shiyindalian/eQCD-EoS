@@ -18,9 +18,9 @@ chi6_250057=np.loadtxt('data/chi6_250.dat')
 chi2_2p1=np.loadtxt('2p1EQCD_250057/chi2.dat')
 chi4_2p1=np.loadtxt('2p1EQCD_250057/chi4.dat')
 chi6_2p1=np.loadtxt('2p1EQCD_250057/chi6.dat')
-chi2_2p1270=np.loadtxt('2p1EQCD_270057/chi2.dat')
-chi4_2p1270=np.loadtxt('2p1EQCD_270057/chi4.dat')
-chi6_2p1270=np.loadtxt('2p1EQCD_270057/chi6.dat')
+chi2_2p1m=np.loadtxt('2p1EQCD_250057m/chi2.dat')
+chi4_2p1m=np.loadtxt('2p1EQCD_250057m/chi4.dat')
+chi6_2p1m=np.loadtxt('2p1EQCD_250057m/chi6.dat')
 chi2Z=np.loadtxt('Z250057/chi2.dat')
 chi4Z=np.loadtxt('Z250057/chi4.dat')
 chi6Z=np.loadtxt('Z250057/chi6.dat')
@@ -40,8 +40,8 @@ hotQCDg=np.loadtxt('data/hotQCDR62_g.dat')
 
 R42_2p1=chi4_2p1/chi2_2p1
 R62_2p1=chi6_2p1/chi2_2p1
-R42_2p1270=chi4_2p1270/chi2_2p1270
-R62_2p1270=chi6_2p1270/chi2_2p1270
+R42_2p1m=chi4_2p1m/chi2_2p1m
+R62_2p1m=chi6_2p1m/chi2_2p1m
 R42_250057=chi4_250057/chi2_250057
 R62_250057=chi6_250057/chi2_250057
 R42Z=chi4Zn/chi2Zn
@@ -55,10 +55,10 @@ ax1=fig.add_subplot(121)
 #ax1.plot(T,R42_250057,'k-',linewidth=2,markersize=5,label=r'$FRG,Tc=250,\alpha=0.57$')
 ax1.plot(T,R42Z,'r-',linewidth=2,markersize=5,label=r'$FRG,Tc=250,\alpha=0.57$')
 ax1.plot(T,R42_2p1,'m-',linewidth=2,markersize=5,label=r'$FRG2p1,Tc=250,\alpha=0.57$')
-ax1.plot(T,R42_2p1270,'k-',linewidth=2,markersize=5,label=r'$FRG2p1,Tc=250,\alpha=0.57$')
+ax1.plot(T,R42_2p1m,'k-',linewidth=2,markersize=5,label=r'$FRG2p1,Tc=270,\alpha=0.57$')
 ax1.fill_between(hotQCDR42[:,0],hotQCDR42[:,1]+hotQCDR42[:,2],hotQCDR42[:,1]-hotQCDR42[:,2],alpha=0.25,facecolor='green',edgecolor='',label=r'HotQCD')
 ax1.errorbar(WBR42[:,0],WBR42[:,1],yerr=WBR42[:,2],color='blue',marker='o',linestyle='',linewidth=2,markersize=5,fillstyle='none',alpha=1,label=r'Wuppertal-Budaspest')
-ax1.axis([100,200,-0.1,1.2])
+ax1.axis([100,200,-0.3,1.2])
 
 ax1.set_xlabel('$T [\mathrm{MeV}]$', fontsize=14, color='black')
 ax1.set_ylabel('$\chi^B_4/\chi^B_2$', fontsize=14, color='black')
@@ -75,7 +75,7 @@ ax2=fig.add_subplot(122)
 #ax2.plot(T,R62_250057,'k-',linewidth=2,markersize=5,label=r'$FRG$')
 ax2.plot(T,R62Z,'r-',linewidth=2,markersize=5,label=r'$FRG$')
 ax2.plot(T,R62_2p1,'m-',linewidth=2,markersize=5,label=r'$FRG,2p1$')
-ax2.plot(T,R62_2p1270,'k-',linewidth=2,markersize=5)
+ax2.plot(T,R62_2p1m,'k-',linewidth=2,markersize=5)
 ax2.fill_between(hotQCDR62[:,0],hotQCDR62[:,1],hotQCDR62[:,2],alpha=0.4,facecolor='gray',edgecolor='',label=r'HotQCD cont. est')
 ax2.errorbar(WBT,WBR62,yerr=WBchi6err/WBchi2,color='blue',marker='o',linestyle='',linewidth=2,markersize=5,fillstyle='none',alpha=1,label=r'Wuppertal-Budaspest')
 #ax2.errorbar(hotQCDb[:,0],hotQCDb[:,1],yerr=hotQCDb[:,2],color='blue',marker='s',linestyle='',linewidth=2,markersize=5,alpha=1,label=r'$N_\tau=8$')
@@ -98,4 +98,4 @@ for label in ax2.yaxis.get_ticklabels():
 fig.subplots_adjust(top=0.9, bottom=0.17, left=0.10, right=0.95, hspace=0.35,
                     wspace=0.35)
 
-fig.savefig("R42R62.pdf")
+fig.savefig("R42R62m.pdf")
