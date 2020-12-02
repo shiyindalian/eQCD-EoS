@@ -1,0 +1,362 @@
+\documentclass[12pt]{article}
+\usepackage{color}
+\usepackage{multicol,ifthen,booktabs,amsmath,amsfonts,bm,mathrsfs,amssymb}
+\usepackage{times,mathptmx}
+\usepackage{braket}
+\usepackage{enumerate}
+\usepackage{geometry}
+\usepackage{graphicx}% Include figure files
+\usepackage{listings}
+\renewcommand\baselinestretch{1.5}\protect
+\abovedisplayshortskip 3 pt
+\belowdisplayshortskip 3 pt
+\geometry{left=2cm,right=2cm,top=3cm,bottom=3cm}
+\graphicspath{{./figures/}{./}}
+\begin{document}
+
+\section{Effective Action}
+\begin{align}
+\Gamma_k&=\int_x\bigg \{ \frac{1}{4} F_{\mu\nu}^a F_{\mu\nu}^a+Z_c (\partial_\mu \bar c^a) D_{\mu}^{a b} c^{b}+\frac{1}{2\xi}(\partial_\mu A_{\mu}^{a})^2\\ \nonumber
+&+\frac{1}{2}\int_p A^a_{\mu}(-p) ({\Gamma_{AA}^{(2)}}_{\mu \nu}^{ab}-Z_A \Pi_{\mu \nu}^{\perp}\delta^{ab} p^2)A _{\nu}^b(p)\\  \nonumber
+&+\bar q [Z_q (\gamma_\mu D_\mu-\gamma_0(\hat \mu+ig A_0)]q-\lambda_q \sum_{a=0}^8 [(\bar q T_a  q)^2+(\bar q i \gamma _5 T_a q)^2]\\  \nonumber
+&+\bar q  h_{k}^{1/2}  \cdot \Sigma_{5} \cdot h_{k}^{1/2} q+tr \big (Z_{\Sigma,k}^{1/2} \cdot \partial_\mu\Sigma \cdot Z_{\Sigma,k}^{1/2}\cdot \partial_\mu\Sigma^\dagger\bigr) +\tilde U_k(\Sigma,\Sigma^\dagger)+V_{glue}(L,\bar L)
+\bigg \}
+\end{align}
+here, the meson field :
+\begin{align}
+  \Sigma&=T^a(\sigma^a+i \pi^a)\,. \quad (a=0,1,...,8)\label{}
+\end{align}
+and 
+\begin{align}
+  \Sigma_5&=T^a(\sigma^a+i \gamma_5 \pi^a)\,. \quad (a=0,1,...,8)\label{}
+\end{align}
+with $T^a=\lambda^a/2(a=1,...,8)$ and $T^{0}=\frac{1}{\sqrt{2N_{f}}}\mathbb{I}_{N_{f}\times N_{f}}$ are generators of $SU(N_f=3)$. $\sigma^a$ and $\pi^a$ mean the scalar and pseudoscalar fields, respectively. The physical meson can be written obviously:
+\begin{align}
+\Sigma=\frac{1}{2}\begin{pmatrix}
+a_0^0+\sigma_L+i\pi^0 + i\eta_L& \sqrt{2}(a_0^{+} +i \pi^{+}) & \sqrt{2} (\kappa^{+} +i K^{+})\\
+\sqrt{2} (a_0^{-} +i \pi^{-}) & -a_0^0+\sigma_L - i\pi^0  + i\eta_L & \sqrt{2}(\kappa^0+i K^0) \\
+\sqrt{2} (\kappa^{-} + i K^{-}) & \sqrt{2} (\bar \kappa^0 + i \bar K^0) & \sqrt{2} (\sigma_S + i \eta_S)\end{pmatrix}\label{eq:mesonmatrix}
+\end{align}
+the meson effective potential can be devided into three parts
+\begin{align}
+  \tilde{U}_{k}(\Sigma)&=U_k(\rho_1,\rho_2)-c_A \xi-c_L\sigma_L-c_S\sigma_S\,, \label{eq:tildeU}
+\end{align}
+here $U_k(\rho_1,\rho_2)$ is an arbitrary function of chiral symmetry invariant variables $\rho_1,\rho_2$.  $ c_A \xi$ is Kobayashi-Maskawa-’t Hooft trem which breaks $U_A(1)$ symmetry. The last two terms of Eq.(\ref{eq:tildeU}) are linear sigma terms, which break the chiral symmetry. The $\rho_1,\rho_2$ are defined as:
+\begin{align}
+\rho_1&=\text{tr}(\Sigma \cdot \Sigma ^\dagger) \\
+\rho_2&=\sqrt{6 \cdot \text{tr}\bigg (\Sigma \cdot \Sigma ^\dagger-\frac{1}{3} \rho_1 \mathbb{I}_{3 \times 3} \bigg )^2 }
+\end{align}
+And the effective potential is Taylor expaned as
+\begin{align}
+U_{k} (\rho_1,\rho_2)=\sum_{i,j=0}^N \frac{\lambda_{ij,k}}{i!j!}(\rho_1 -\kappa_1)^i(\rho_2-\kappa_2)^j
+\end{align}
+Here, we choose the expansion order $N=5$.
+
+On the vacuum expectation value,$\rho_1,\rho_2$ are given as:
+\begin{align}
+\rho_1&=\frac{1}{2}(\sigma_l^2+\sigma_s^2)\\
+\rho_2&=\frac{1}{2}(2 \sigma_s^2-\sigma_l^2)
+\end{align}
+The Yukawa coupling 
+\begin{align}
+h_k=\begin{pmatrix} 
+h_{l,k}&0&0\\
+0&h_{l,k}&0\\
+0&0&h_{s,k}
+\end{pmatrix}
+\end{align}
+and meson and quark wave function renormalization
+\begin{align}
+Z_{\sigma,k}=\begin{pmatrix} 
+Z_{\phi_l,k}&0&0\\
+0&Z_{\phi_l,k}&0\\
+0&0&Z_{\phi_s,k}
+\end{pmatrix} 
+\quad \quad
+Z_{q,k}=\begin{pmatrix} 
+Z_{l,k}&0&0\\
+0&Z_{l,k}&0\\
+0&0&Z_{s,k}
+\end{pmatrix} 
+\end{align}
+At present, we assume $Z_{\sigma,k}=Z_{\pi,k}$.
+
+The quark masses are given as (Appx(\ref{appx_B})):
+ \begin{align}\label{quarkmass_eq}
+m_l&=\frac{h_{l,k}}{2}\sigma_l \\
+m_s&=\frac{h_{s,k}}{\sqrt{2}}\sigma_s
+\end{align}
+
+\section{Flow Equations}
+
+The the Wetterich equation with dynamical hadronisation reads
+\begin{align}
+\partial_t \Gamma_k[\Phi]+\int \langle  \partial_t  \hat \phi_{k,i}\rangle \bigg ( \frac{\delta \Gamma_k [\Phi]}{\delta \phi_i}+c_\sigma \delta_{i \sigma}\bigg )
+=\frac{1}{2} \text{Tr}(G_k[\Phi] \partial_t R_k)+\text{Tr}\bigg( G_{\phi \Phi_j} [\Phi] \frac{\delta \langle  \partial_t  \hat \phi_{k,i}\rangle}{\delta \Phi_j } R_{\phi} \bigg) \label{Wettericheq}
+\end{align}
+we assume 
+\begin{align}
+\langle  \partial_t  \hat \phi_{k}\rangle&= \dot{A}_{l,k}[(\bar q T_a  q)+(\bar q i \gamma _5 T_a q)]+\dot{A}_{s,k}[(\bar q T_b  q)+(\bar q i \gamma _5 T_b q)] +\dot{B}_k \Sigma,\\
+&\text{for} \quad a=L,1,\cdots 3,b=4,\cdots7, S \nonumber
+\end{align}
+here $T^L,T^S$ are given in Appendix \ref{appx_D}
+As pointed out in ref \cite{} , we choose $\dot{B}_k =0$.
+By taking the derivative of of each side of Eq. (\ref{Wettericheq})
+\begin{align}
+\frac{\overrightarrow{\delta}}{\delta(\bar q T^a q)}(Eq. (\ref{Wettericheq}))\frac{\overleftarrow{\delta}}{\delta (\bar q T^a q)},
+\end{align}
+we get
+\begin{align}
+- \partial_t \lambda_q + \dot{A} h_{k}=-\text{Flow} _{(\bar q T^a q) (\bar q T^a q)}^{(4)}
+\end{align}
+with the condication
+\begin{align}\label{lambda_eq}
+\lambda_q  \equiv 0 , \quad \forall k
+\end{align}
+we get the renormalised hadronisation function
+\begin{align}
+\dot{\bar A}=-\frac{1}{\bar h_k}\overline{  \text{Flow} }_{(\bar q T^a q) (\bar q T^a q)}^{(4)}
+\end{align}
+we split the expression
+\begin{align}
+\dot{\bar A}_{l,k}=-\frac{1}{\bar h_{l,k}}\overline{  \text{Flow} }_{(\bar q T^L q) (\bar q T^L q)}^{(4)} \\
+\dot{\bar A}_{s,k}=-\frac{1}{\bar h_{s,k}}\overline{  \text{Flow} }_{(\bar q T^S q) (\bar q T^S  q)}^{(4)}
+\end{align}
+And to calculate the yukawa flow equation:
+\begin{align}
+\frac{{\delta}}{\delta \sigma^a}\frac{{\delta}}{\delta(\bar q T^a q)}(Eq. (\ref{Wettericheq})) \quad a=L/S
+\end{align}
+we get
+\begin{align}
+\partial \bar h_{l,k}&=\bigg( \eta_{l,k} +\frac{1}{2}\eta_{\phi,k}\bigg )-\frac{\delta^2 \bar {\tilde U}(\Sigma)}{(\delta \bar \sigma_L)^2}\dot{\bar A}_{l,k}+\overline{  \text{Flow} }_{(\bar q T^L q) \sigma_L}^{(3)}\\
+\partial \bar h_{s,k}&=\bigg( \eta_{s,k} +\frac{1}{2}\eta_{\phi,k}\bigg )-\frac{\delta^2 \bar {\tilde U}(\Sigma)}{(\delta \bar \sigma_S)^2}\dot{\bar A}_{s,k}+\overline{  \text{Flow} }_{(\bar q T^S q) \sigma_S}^{(3)}
+\end{align}
+A simpler way given in \cite{}
+\begin{align}
+\frac{{1}}{\sigma^a}\frac{{\delta}}{\delta(\bar q T^a q)}(Eq. (\ref{Wettericheq})) \quad a=L/S
+\end{align}
+and we get
+\begin{align}
+\partial \bar h_{l,k}&=\bigg( \eta_{l,k} +\frac{1}{2}\eta_{\phi,k}\bigg )-\frac{1}{\bar \sigma_L} \frac{\delta \bar{\tilde U}(\Sigma)}{\delta \bar \sigma_L}\dot{\bar A}_{l,k}+\frac{1}{\bar \sigma_L} \text{Re} \overline{  \text{Flow} }_{(\bar q T^L q)}^{(2)}\\
+\partial \bar h_{s,k}&=\bigg( \eta_{s,k} +\frac{1}{2}\eta_{\phi,k}\bigg )-\frac{1}{\bar \sigma_S} \frac{\delta \bar{\tilde U}(\Sigma)}{\delta \bar \sigma_S}\dot{\bar A}_{s,k}+\frac{1}{\bar \sigma_S} \text{Re} \overline{  \text{Flow} }_{(\bar q T^S q)}^{(2)} \label{Yukawa_eq}
+\end{align}
+the next step is to calculate the $\overline{\text{Flow}}$ terms.
+
+\section{Result}
+Pressure:
+\begin{align}
+\frac{p}{T^4}=\frac{U(0,0)-U((T,\mu)}{T^4}
+\end{align}
+and  n-th order cumulats
+\begin{align}
+\chi^B_n=\frac{\partial^n}{\partial (\mu_B/T)^n}\frac{p}{T^4}
+\end{align}
+
+\section{Appendix.A}
+The meson masses can be obtained by Hessian matrix:
+
+\begin{align}
+H_{p,LL}=&\frac{c_A \sigma_S}{\sqrt{2}}+U^{(1,0)}-U^{(0,1)}\\
+H_{p,LS}=&\frac{c_A \sigma_L}{\sqrt{2}}\\
+H_{p,SS}=&U^{(1,0)}+2 U^{(0,1)}\\
+H_{p,11}=&-\frac{c_A \sigma_S}{\sqrt{2}}+U^{(1,0)}-U^{(0,1)}\\
+H_{p,44}=&- \frac{c_A \sigma_L}{2} + U^{(1,0)} + \frac{\sigma_L^2- 3 \sqrt{2} \sigma_L \sigma_S+4 \sigma_S^2}{2 \sigma_S^2-\sigma_L^2} U^{(0,1)}
+\end{align}
+\begin{align}
+H_{s,LL}=&-\frac{c_A \sigma_S}{\sqrt{2}}+U^{(1,0)}-U^{(0,1)} +(U^{(2,0)} -2U^{(1,1)}+U^{(0,2)})\sigma_L^2\\
+H_{s,LS}=&-\frac{c_A \sigma_L}{\sqrt{2}}+(U^{(2,0)}+U^{(1,1)}-2U^{(0,2)}) \sigma_L \sigma_S\\
+H_{s,SS}=&U^{(1,0)}+2 U^{(0,1)} +(4 U^{(2,0)}+4U^{(1,1)}+U^{(2,0)})\sigma_S^2 \\
+H_{s,11}=&\frac{c_A \sigma_S}{\sqrt{2}}+U^{(1,0)} +\frac{7 \sigma_L^2 - 2 \sigma_S^2}{2 \sigma_S^2-\sigma_L^2}U^{(0,1)}\\
+H_{s,44}=&\frac{c_A \sigma_L}{2}+U^{(1,0)}+\frac{\sigma_L^2+3 \sqrt{2} \sigma_L\sigma_S+4 \sigma_S^2}{2 \sigma_S^2-\sigma_L^2}U^{(0,1)}
+\end{align}
+Because the nonvanishing nondiagonal element $H_{s/p,LS}$
+we introduce the mixing angles between LS and physical basis:
+\begin{align}\label{eq:plstrafo}
+\begin{pmatrix}f_0 \\ \sigma \end{pmatrix} &= \begin{pmatrix} \cos\varphi_s & - \sin\varphi_s \\ \sin\varphi_s & \cos\varphi_s \end{pmatrix} \begin{pmatrix}\sigma_L \\ \sigma_S \end{pmatrix}\,,\\
+\begin{pmatrix}\eta \\ \eta^\prime \end{pmatrix} &= \begin{pmatrix} \cos\varphi_p & - \sin\varphi_p \\ \sin\varphi_p & \cos\varphi_p \end{pmatrix} \begin{pmatrix}\eta_L \\ \eta_S \end{pmatrix}\,.
+\end{align}
+here
+\begin{align}
+\varphi_{s/p}=\frac{1}{2} arctan\Bigg(\frac{2H_{s/p,LS}}{H_{s/p,SS}-H_{s/p,LL}}\Bigg)
+\end{align}
+so the square of meson mass are given as
+\begin{align}
+m_{f_0}^2&=\cos^2\varphi_s H_{s,SS}+\sin^2 \varphi_s H_{s,LL}-2 \sin \varphi_s \cos \varphi_s H_{s,LS}\\
+m_{\sigma}^2&=\sin^2\varphi_s H_{s,SS}+\cos^2 \varphi_s H_{s,LL}+2 \sin \varphi_s \cos \varphi_s H_{s,LS}\\
+m_{a_0}^2&=H_{s,11}\\
+m_{\kappa}^2&=H_{s,44}\\
+m_{\eta}^2&=\cos^2\varphi_p H_{p,SS}+\sin^2 \varphi_p H_{p,LL}-2 \sin \varphi_p \cos \varphi_p H_{p,LS}\\
+m_{\eta'}^2&=\sin^2\varphi_p H_{p,SS}+\cos^2 \varphi_p H_{p,LL}+2 \sin \varphi_p \cos \varphi_p H_{p,LS}\\
+m_{\pi}^2&=H_{p,11}\\
+m_{K}^2&=H_{p,44}
+\end{align}
+We can simplify them as
+ \begin{align}
+m_{f_0/\eta}^2=\frac{H_{s/p,LL}+H_{s/p,SS}}{2}+\sqrt{(H_{s/p,LL}-H_{s/p,SS})^2+4 H_{s/p,LS}^2}\\
+m_{\sigma/\eta'}^2=\frac{H_{s/p,LL}+H_{s/p,SS}}{2}-\sqrt{(H_{s/p,LL}-H_{s/p,SS})^2+4 H_{s/p,LS}^2}
+\end{align}
+And the diagonal element of meson field become:
+\begin{align}
+\Sigma_{(1,1)}&=\frac{1}{2}(a_0^0+\cos\varphi_s f_0+\sin\varphi_s \sigma+i\pi^0 + i \cos\varphi_p \eta+i\sin\varphi_p \eta')\\
+\Sigma_{(2,2)}&=\frac{1}{2}(- a_0^0+\cos\varphi_s f_0+\sin\varphi_s \sigma - i\pi^0  + i\cos\varphi_p \eta+i\sin\varphi_p \eta')\\
+\Sigma_{(3,3)}&= \frac{1}{\sqrt{2} }(-\sin\varphi_s f_0 +\cos\varphi_s -i \sin\varphi_p\eta +i \cos\varphi_p \eta')
+\end{align}
+
+The coefficients in Eq.(\ref{Yukawa_eq}) are given as
+\begin{align}
+\frac{1}{\sigma_L} \frac{\delta \tilde U(\Sigma)}{\delta \sigma_L}&=- \frac{c_A \sigma_S}{\sqrt{2}} +U^{(1,0)} -U^{(0,1)}\\
+\frac{1}{\sigma_S} \frac{\delta \tilde U(\Sigma)}{\delta \sigma_L}&=- \frac{c_A \sigma_L^2}{2 \sqrt{2} \sigma_S}+U^{(1,0)} +2 U^{(0,1)} 
+\end{align}
+One interesting thing is that  $\frac{1}{\sigma_L} \frac{\delta \tilde U(\Sigma)}{\delta \sigma_L}=m_\pi^2$.
+
+the three-point meson vertex are defined as
+\begin{align}
+\lambda_{\phi_i,\phi_j,\phi_l,k}=\frac{\partial^3 U_k(\Sigma)}{\partial \phi_i,\partial \phi_j,\partial \phi_l}\bigg |_{\phi_0}
+\end{align}
+because we assume
+\begin{align}
+Z_\phi=Z_{\pi^+}
+\end{align}
+we choose the three-point meson vertex involve one $\pi^+$, which are given as
+\begin{align}
+\lambda_{\pi^+\pi^-f_0,k}&=\frac{c_A}{\sqrt{2}} \sin\phi_S+\cos\phi_S(U^{(0,2)} - 2 U^{(1,1)} + U^{(2,0)}) \sigma_L+\sin\phi_S(2 U^{(0,2)} - U^{(1,1)} - U^{(2,0)})  \sigma_S\\
+\lambda_{\pi^+\pi^-\sigma,k}&=-\frac{c_A}{\sqrt{2}} \cos\phi_S+\sin\phi_S(U^{(0,2)} - 2 U^{(1,1)} + U^{(2,0)}) \sigma_L-\cos\phi_S(2 U^{(0,2)} - U^{(1,1)} - U^{(2,0)})  \sigma_S\\
+\lambda_{\pi^+a_0^-\eta,k}&=\sin\phi_P \frac{c_A} {\sqrt{2}} + 6 \cos\phi_PU^{(0,1)} \frac{ \sigma_L}{2 \sigma_S-\sigma_L}\\
+\lambda_{\pi^+a_0^-\eta',k}&=-\cos\phi_P\frac{c_A}{\sqrt{2}} +6 \sin\phi_P U^{(0,1)} \frac{\sigma_L}{2 \sigma_S-\sigma_L}\\
+\lambda_{\pi^+\kappa^-K^0,k}&=\lambda_{\pi^+K^-\kappa^0,k}=\frac{c_A}{\sqrt{2}} +6 U^{(0,1)} \frac{\sigma_S}{2 \sigma_S-\sigma_L}
+\end{align}
+
+\section{Appendix.B}\label{appx_B}
+
+The quark masses are given as
+\begin{align}
+M_q
+=\begin{pmatrix} 
+m_{l,k}&0&0\\
+0&m_{l,k}&0\\
+0&0&m_{s,k}
+\end{pmatrix} 
+=\frac{\overrightarrow{\delta}}{\delta \bar q}\Gamma_k\frac{\overleftarrow{\delta}}{\delta q}\Bigg|_{\Sigma=\Sigma_0}
+\end{align}
+with the condication Eq.(\ref{lambda_eq}),
+\begin{align}
+M_q
+=\frac{\overrightarrow{\delta}}{\delta \bar q}\bar q h^{\frac{1}{2}} \Sigma_0 h^{\frac{1}{2}} q \frac{\overleftarrow{\delta}}{\delta q}
+=\begin{pmatrix} 
+\frac{h_{l,k}}{2}\sigma_L&0&0\\
+0&\frac{h_{l,k}}{2}\sigma_l&0\\
+0&0&\frac{h_{s,k}}{\sqrt{2}}\sigma_s
+\end{pmatrix} 
+\end{align}
+which are shown in Eq.(\ref{quarkmass_eq}).
+
+The meson quark vertex are given by
+\begin{align}
+V_{\bar q q \phi_i}=\frac{\delta}{\delta \phi_i}\frac{\overrightarrow{\delta}}{\delta \bar q}\Gamma_k \frac{\overleftarrow{\delta}}{\delta q}
+\end{align}
+here, we force on u and s quark anomalous dimension and Yukawa coupling, so meson quark vertex which are used:
+\begin{align}
+V_{\bar u u \phi_i}&=\frac{\delta}{\delta \phi_i}h_l {\Sigma_5}_{(1,1)}  \quad  V_{\bar u d \phi_i}=\frac{\delta}{\delta \phi_i}h_l {\Sigma_5}_{(1,2)} \quad V_{\bar u s \phi_i}=\frac{\delta}{\delta \phi_i}h_l^{1/2}h_s^{1/2}{\Sigma_5}_{(1,3)}\\
+V_{\bar s u \phi_i}&=\frac{\delta}{\delta \phi_i}h_l^{1/2}h_s^{1/2} {\Sigma_5}_{(3,1)} \quad  V_{\bar s d \phi_i}=\frac{\delta}{\delta \phi_i}h_l^{1/2}h_s^{1/2} {\Sigma_5}_{(3,2)} \quad  V_{\bar s s \phi_i}=\frac{\delta}{\delta \phi_i}h_s {\Sigma_5}_{(3,3)}
+\end{align}
+then we get
+\begin{align}
+V_{\bar u u f_0}=h_l \cos\varphi_s /2 \quad V_{\bar u u \sigma}=h_l \sin\varphi_s /2 \quad V_{\bar u u a_0}=h_l /2% \quad V_{\bar u d a_0}=
+\end{align}
+
+\section{Appendix.C}
+The Kobayashi-Maskawa-’t Hooft coupling $\bar c_A$, should decrease
+at high scalar and high temperatures. However, if we keep $c_A$ a constant,
+and 
+\begin{align}
+\bar c_A=\frac{c_A}{Z_\phi^{3/2}}
+\end{align}
+$\bar c_A$ will increase with scalar and temperarure. One scheme is given in ref \cite{Rennecke:2016tkm}, which assume that $\bar c_A$ is a constant. However, this scheme cause a very sharp phase transitions. We assume  $c_A$ is a infrared enhancement function
+\begin{align}
+c_A=c_{A,IR}\frac{1}{e^{\frac{k-k_{cut}}{\Delta_k}}+1}
+\end{align}
+here $k_{cut}=1 GeV$ and $\Delta_k=20 MeV$. And $\bar c_A$ still dressed as $\bar c_A=c_A/Z_\phi^{3/2}$.
+
+\section{Appendix.D}\label{appx_D}
+As we known that
+\begin{align}
+T_0=\frac{1}{\sqrt{6}}
+\begin{pmatrix}
+1& 0 & 0\\
+0 & 1 & 0 \\
+0 & 0 & 1
+\end{pmatrix} 
+\quad
+T_8=\frac{1}{2\sqrt{3}}
+\begin{pmatrix}
+1& 0 & 0\\
+0 & 1 & 0 \\
+0 & 0 & -2
+\end{pmatrix} 
+\end{align}
+We have
+\begin{align}
+\Sigma_0=T_0 \sigma_0 +T_8 \sigma_8 
+=\begin{pmatrix}
+\frac{1}{\sqrt{6}}\sigma_0+\frac{1}{2\sqrt{3}}\sigma_8 & 0 & 0\\
+0 & \frac{1}{\sqrt{6}}\sigma_0+\frac{1}{2\sqrt{3}}\sigma_8 & 0 \\
+0 & 0 & \frac{1}{\sqrt{6}}\sigma_0-\frac{1}{\sqrt{3}}\sigma_8 
+\end{pmatrix}
+=\frac{1}{2}\begin{pmatrix}
+\sigma_L & 0 & 0\\
+0 & \sigma_L & 0 \\
+0 & 0 & \sqrt{2} \sigma_S
+\end{pmatrix}
+=T_L \sigma_L +T_S \sigma_S
+\end{align}
+so 
+\begin{align}
+T_L=\frac{1}{2}
+\begin{pmatrix}
+1& 0 & 0\\
+0 & 1 & 0 \\
+0 & 0 & 0
+\end{pmatrix} 
+\quad
+T_S=\frac{1}{\sqrt{2}}
+\begin{pmatrix}
+0& 0 & 0\\
+0 & 0 & 0 \\
+0 & 0 & 1
+\end{pmatrix} 
+\end{align}
+
+\section{Appendix.E:mesons anomalous dimension}
+As assumed above,
+\begin{equation}
+\eta_\phi=\eta_{\pi^+}
+\end{equation}
+and we get
+\begin{align}
+\eta_{\phi}(0)=&\frac{\bar Z_{\phi}}{Z_{\phi}(0)}\bigg\{\frac{1}{3 \pi^2 k^2}\big[\bar \lambda_{\pi^+ \pi^- f_0}^2 \mathcal{BB}_{(2,2)}^{(\pi,f_0)}+\lambda_{\pi^+ \pi^- \sigma}^2 \mathcal{BB}_{(2,2)}^{(\pi,\sigma)}+\lambda_{\pi^+ a_0^- \eta}^2\mathcal{BB}_{(2,2)}^{(a_0,\eta)} \nonumber \\ 
+&+\lambda_{\pi^+ a_0^- \eta'}^2\mathcal{BB}_{(2,2)}^{(a_0,\eta')} +(\lambda_{\pi^+ \kappa^- K^0}^2+\lambda_{\pi^+ K^- \kappa^0}^2)\mathcal{BB}_{(2,2)}^{(K,\kappa)}\big]\nonumber\\
+&+\frac{N_c h_{l,k}^2}{6 \pi^2}\big [(2\eta_{l,k}-3)\mathcal{F}_{(2)}(
+    \tilde{m}_{l,k}^{2};T,\mu_q)-4(\eta_{l,k}-2)\mathcal{F}_{(3)}(\tilde{m}_{l,k}^{2};T,\mu_q)\big]\bigg \}
+\end{align}
+\begin{align}
+\eta_{\phi}(0,k)=&\frac{1}{3 \pi^2 k^2}\big[\bar \lambda_{\pi^+ \pi^- f_0}^2 \mathcal{BB}_{(2,2)}^{(\pi,f_0)}+\lambda_{\pi^+ \pi^- \sigma}^2 \mathcal{BB}_{(2,2)}^{(\pi,\sigma)}+\lambda_{\pi^+ a_0^- \eta}^2\mathcal{BB}_{(2,2)}^{(a_0,\eta)} \nonumber \\ 
+&+\lambda_{\pi^+ a_0^- \eta'}^2\mathcal{BB}_{(2,2)}^{(a_0,\eta')} +(\lambda_{\pi^+ \kappa^- K^0}^2+\lambda_{\pi^+ K^- \kappa^0}^2)\mathcal{BB}_{(2,2)}^{(K,\kappa)}\big]\\ 
+  &-\frac{N_{c}}{\pi^2}\bar h_k^2\int_0^1 d x\bigg[(1-\eta_{l,k}) \sqrt x +\eta_{l,k} x\bigg]\nonumber\\
+  &\times \int_{-1}^1 d \cos \theta\Bigg\{\bigg[ \Big(\mathcal{FF}_{(1,1)}(\tilde{m}_{l,k}^{2},\tilde{m}_{l,k}^{2})-\mathcal{F}_{(2)}(\tilde{m}_{l,k}^{2}) \Big)\nonumber \\
+  &-\Big(\mathcal{FF}_{(2,1)}(\tilde{m}_{l,k}^{2},\tilde{m}_{l,k}^{2})-\mathcal{F}_{(3)}(\tilde{m}_{l,k}^{2}) \Big)\bigg] \nonumber \\
+  &+\bigg[\Big(\sqrt x -\cos \theta\Big)\Big(1+r_F(x')\Big)\mathcal{FF}_{(2,1)}(\tilde{m}_{l,k}^{2},\tilde{m}_{l,k}^{2})\nonumber \\
+  &-\mathcal{F}_{(3)}(\tilde{m}_{l,k}^{2})\bigg]-\frac{1}{2}\bigg[\Big(\sqrt x -\cos \theta\Big)\Big(1+r_F(x')\Big)\nonumber \\
+  &\times\mathcal{FF}_{(1,1)}(\tilde{m}_{l,k}^{2},\tilde{m}_{l,k}^{2})-\mathcal{F}_{(2)}(\tilde{m}_{l,k}^{2})\bigg]\Bigg\}\,,
+\end{align}
+\section{Appendix.F:quarks anomalous dimension}
+\section{Appendix.G:Yukawa coupling}
+\begin{align}
+\partial_t \bar h_l=&(\eta_l+\frac{1}{2}\eta_{\phi})\bar h_l +\frac{1}{8 \pi^2}\bar h_l^3 \big [ 3\mathcal{L}_{(1,1)}^{(l,a_0)} -3 \mathcal{L}_{(1,1)}^{(l,\pi)}
++\cos^2 \varphi_s \mathcal{L}_{(1,1)}^{(l,f_0)}\nonumber\\
+&-\cos^2 \varphi_p \mathcal{L}_{(1,1)}^{(l,\eta)}+\sin^2 \varphi_s \mathcal{L}_{(1,1)}^{(l,\sigma)}-\sin^2 \varphi_p \mathcal{L}_{(1,1)}^{(l,\eta')}\big ]\nonumber\\
+&-\frac{3}{2\pi^2} \frac{N_c^2-1}{2N_c}g_{\bar l A l} \bar h_l  \mathcal{L}_{(1,1)}^{(l,0)}\\
+\partial_t \bar h_s=&(\eta_s+\frac{1}{2}\eta_{\phi})\bar h_ls+\frac{1}{8 \pi^2} 2 \bar h_s^3 \big [   \sin^2 \varphi_s \mathcal{L}_{(1,1)}^{(s,f_0)} -\sin^2 \varphi_p \mathcal{L}_{(1,1)}^{(s,\eta)} \nonumber\\
+&+  \cos^2 \varphi_s \mathcal{L}_{(1,1)}^{(s,\sigma)}-  \cos^2 \varphi_p \mathcal{L}_{(1,1)}^{(s,\eta')}\big]\nonumber\\
+&-\frac{3}{2\pi^2} \frac{N_c^2-1}{2N_c}g_{\bar s A s} \bar h_s  \mathcal{L}_{(1,1)}^{(s,0)}
+\end{align}
+\end{document}
