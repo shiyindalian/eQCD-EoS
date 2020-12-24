@@ -44,15 +44,15 @@ R42_2p1m=chi4_2p1m/chi2_2p1m
 R62_2p1m=chi6_2p1m/chi2_2p1m
 R42_250057=chi4_250057/chi2_250057
 R62_250057=chi6_250057/chi2_250057
-R42Z=chi4Zn/chi2Zn
-R62Z=chi6Zn/chi2Zn
+R42Z=chi4Z/chi2Z
+R62Z=chi6Z/chi2Z
 #T1=T/177
 # Create figure
 fig=plt.figure(figsize=(9., 3.5))
 #fig=plt.figure()
 ax1=fig.add_subplot(121)
 
-#ax1.plot(T,R42_250057,'k-',linewidth=2,markersize=5,label=r'$FRG,Tc=250,\alpha=0.57$')
+ax1.plot(T,R42_250057,'k-',linewidth=2,markersize=5,label=r'$FRG,Tc=250,\alpha=0.57$')
 ax1.plot(T,R42Z,'r-',linewidth=2,markersize=5,label=r'$FRG,Tc=250,\alpha=0.57$')
 #ax1.plot(T,R42_2p1,'m-',linewidth=2,markersize=5,label=r'$FRG2p1,Tc=250,\alpha=0.57$')
 #ax1.plot(T,R42_2p1m,'k-',linewidth=2,markersize=5,label=r'$FRG2p1,Tc=250,\alpha=0.57$')
@@ -72,7 +72,7 @@ for label in ax1.yaxis.get_ticklabels():
 
 ax2=fig.add_subplot(122)
 
-#ax2.plot(T,R62_250057,'k-',linewidth=2,markersize=5,label=r'$FRG$')
+ax2.plot(T,R62_250057,'k-',linewidth=2,markersize=5,label=r'$FRG$')
 ax2.plot(T,R62Z,'r-',linewidth=2,markersize=5,label=r'$FRG$')
 #ax2.plot(T,R62_2p1,'m-',linewidth=2,markersize=5,label=r'$FRG,2p1$')
 #ax2.plot(T,R62_2p1m,'k-',linewidth=2,markersize=5)
