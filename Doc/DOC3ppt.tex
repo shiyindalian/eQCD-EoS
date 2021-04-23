@@ -18,8 +18,10 @@
 \begin{align}
 \Gamma_k&=\int_x\bigg \{ \frac{1}{4} F_{\mu\nu}^a F_{\mu\nu}^a+Z_c (\partial_\mu \bar c^a) D_{\mu}^{a b} c^{b}+\frac{1}{2\xi}(\partial_\mu A_{\mu}^{a})^2\\ \nonumber
 &+\frac{1}{2}\int_p A^a_{\mu}(-p) ({\Gamma_{AA}^{(2)}}_{\mu \nu}^{ab}-Z_A \Pi_{\mu \nu}^{\perp}\delta^{ab} p^2)A _{\nu}^b(p)\\  \nonumber
-&+\bar q [Z_q (\gamma_\mu D_\mu-\gamma_0(\hat \mu+ig A_0)]q-\lambda_q \sum_{a=0}^8 [(\bar q T_a  q)^2+(\bar q i \gamma _5 T_a q)^2]\\  \nonumber
-&+\bar q  h_{k}^{1/2}  \cdot \Sigma_{5} \cdot h_{k}^{1/2} q+tr \big (Z_{\Sigma,k}^{1/2} \cdot \partial_\mu\Sigma \cdot Z_{\Sigma,k}^{1/2}\cdot \partial_\mu\Sigma^\dagger\bigr) +\tilde U_k(\Sigma,\Sigma^\dagger)+V_{glue}(L,\bar L)
+&+\bar q [Z_q (\gamma_\mu D_\mu-\gamma_0(\hat \mu+ig A_0)]q \\  \nonumber
+&-\lambda_q \sum_{a=0}^8 [(\bar q T_a  q)^2+(\bar q i \gamma _5 T_a q)^2]\\  \nonumber
+&+\bar q  h_{k}^{1/2}  \cdot \Sigma_{5} \cdot h_{k}^{1/2} q+tr \big (Z_{\Sigma,k}^{1/2} \cdot \partial_\mu\Sigma \cdot Z_{\Sigma,k}^{1/2}\cdot \partial_\mu\Sigma^\dagger\bigr)  \\  \nonumber
+&+\tilde U_k(\Sigma,\Sigma^\dagger)+V_{glue}(L,\bar L)
 \bigg \}
 \end{align}
 here, the meson field :
@@ -86,10 +88,11 @@ The quark masses are given as (Appx(\ref{appx_B})):
 m_l&=\frac{h_{l,k}}{2}\sigma_l \\
 m_s&=\frac{h_{s,k}}{\sqrt{2}}\sigma_s
 \end{align}
+And the meson mass squares are given from the Hessian matrix of the meson effective potential, i.e.
 
 \section{Flow Equations}
 
-The the Wetterich equation with dynamical hadronisation reads
+The  Wetterich equation with dynamical hadronisation reads
 \begin{align}
 \partial_t \Gamma_k[\Phi]+\int \langle  \partial_t  \hat \phi_{k,i}\rangle \bigg ( \frac{\delta \Gamma_k [\Phi]}{\delta \phi_i}+c_\sigma \delta_{i \sigma}\bigg )
 =\frac{1}{2} \text{Tr}(G_k[\Phi] \partial_t R_k)+\text{Tr}\bigg( G_{\phi \Phi_j} [\Phi] \frac{\delta \langle  \partial_t  \hat \phi_{k,i}\rangle}{\delta \Phi_j } R_{\phi} \bigg) \label{Wettericheq}
@@ -145,15 +148,33 @@ the next step is to calculate the $\overline{\text{Flow}}$ terms.
 \section{Result}
 Pressure:
 \begin{align}
-\Omega=U (\sigma_l,\sigma_s)+V_{glue}(L,\bar L) \\
-\frac{p}{T^4}=\frac{\Omega(0,0)-\Omega((T,\mu)}{T^4}\\
-\partial_t U=
+\frac{p}{T^4}=\frac{U(0,0)-U((T,\mu)}{T^4}
 \end{align}
 and  n-th order cumulats
 \begin{align}
 \chi^B_n=\frac{\partial^n}{\partial (\mu_B/T)^n}\frac{p}{T^4}
 \end{align}
 
+\begin{align}
+  \Delta_{l/s} =
+  &\,  m_{l/s}^0\frac{\partial
+    \Omega[\Phi_{\textrm{EoM}};T,\mu_q]}{\partial {m^0_{l/s}}}=
+    m_{l/s}^0  \frac{T}{\cal V} \int_x \langle \bar l(x) l(x) / \bar s(x) s(x) \rangle\,,
+                 \label{eq:chiralcond}
+\end{align} 
+
+
+\begin{align}
+  \Delta_{l/s}\simeq  - m_{l/s}^0
+  T\sum_{n\in\mathbb{Z}} \int \frac{d^3 q}{(2 \pi)^3}
+  \text{tr} \,G_{l\bar l/s \bar s} (q)\,. 
+\end{align}
+%
+\begin{align}\label{eq:chiralcondren}
+  \Delta_{l/s,R} = \frac{1}{{\cal N}_R}\left[\Delta_{l/s}(T,\mu_q) - 
+  \Delta_{l/s}(0,0)\right]\,.
+\end{align}
+%
 \section{Appendix.A}
 The meson masses can be obtained by Hessian matrix:
 
