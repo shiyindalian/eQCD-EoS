@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020) (preloaded format=pdflatex 2020.8.18)  12 APR 2021 18:38
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020) (preloaded format=pdflatex 2020.8.18)  9 MAY 2021 11:19
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -321,7 +321,7 @@ File: l3backend-pdfmode.def 2020-03-12 L3 backend support: PDF mode
 \l__kernel_color_stack_int=\count278
 \l__pdf_internal_box=\box95
 )
-(./DOC3.aux)
+No file DOC3.aux.
 \openout1 = `DOC3.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 15.
@@ -340,7 +340,7 @@ LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 15.
 LaTeX Font Info:    ... okay on input line 15.
 LaTeX Font Info:    Trying to load font information for OT1+ptm on input line 1
 5.
- (/usr/local/texlive/2020/texmf-dist/tex/latex/psnfss/ot1ptm.fd
+(/usr/local/texlive/2020/texmf-dist/tex/latex/psnfss/ot1ptm.fd
 File: ot1ptm.fd 2001/06/04 font definitions for OT1/ptm.
 )
 (/usr/local/texlive/2020/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
@@ -435,11 +435,53 @@ LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <9> not available
 (Font)              Font shape `OT1/ptm/b/n' tried instead on input line 18.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <7> not available
 (Font)              Font shape `OT1/ptm/b/n' tried instead on input line 18.
- [1
 
-{/usr/local/texlive/2020/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] [2] [3]
- [4]
-[5] [6] [7]
+
+LaTeX Warning: Reference `eq:tildeU' on page 1 undefined on input line 44.
+
+[1
+
+{/usr/local/texlive/2020/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
+
+LaTeX Warning: Reference `appx_B' on page 2 undefined on input line 84.
+
+[2]
+
+LaTeX Warning: Reference `appx_D' on page 3 undefined on input line 102.
+
+
+LaTeX Warning: Reference `Wettericheq' on page 3 undefined on input line 104.
+
+
+LaTeX Warning: Reference `Wettericheq' on page 3 undefined on input line 107.
+
+
+LaTeX Warning: Reference `Wettericheq' on page 3 undefined on input line 107.
+
+
+LaTeX Warning: Reference `Wettericheq' on page 3 undefined on input line 128.
+
+
+LaTeX Warning: Reference `Wettericheq' on page 3 undefined on input line 128.
+
+
+LaTeX Warning: Reference `Wettericheq' on page 3 undefined on input line 137.
+
+
+LaTeX Warning: Reference `Wettericheq' on page 3 undefined on input line 137.
+
+[3] [4] [5]
+
+LaTeX Warning: Reference `Yukawa_eq' on page 6 undefined on input line 207.
+
+[6]
+
+LaTeX Warning: Reference `lambda_eq' on page 7 undefined on input line 243.
+
+
+LaTeX Warning: Reference `quarkmass_eq' on page 7 undefined on input line 253.
+
+[7]
 
 LaTeX Warning: Citation `Rennecke:2016tkm' on page 8 undefined on input line 27
 6.
@@ -457,11 +499,14 @@ LaTeX Warning: Citation `Lo:2013hla' on page 10 undefined on input line 366.
 
 LaTeX Warning: There were undefined references.
 
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
  ) 
 Here is how much of TeX's memory you used:
- 4700 strings out of 480608
- 64136 string characters out of 5903615
- 322464 words of memory out of 5000000
+ 4698 strings out of 480608
+ 64118 string characters out of 5903615
+ 322387 words of memory out of 5000000
  20494 multiletter control sequences out of 15000+600000
  564023 words of font info for 95 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
@@ -478,7 +523,7 @@ st/fonts/type1/urw/symbol/usyr.pfb></usr/local/texlive/2020/texmf-dist/fonts/ty
 pe1/urw/times/utmb8a.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/urw/ti
 mes/utmr8a.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/urw/times/utmri8
 a.pfb>
-Output written on DOC3.pdf (11 pages, 127066 bytes).
+Output written on DOC3.pdf (11 pages, 127195 bytes).
 PDF statistics:
  85 PDF objects out of 1000 (max. 8388607)
  60 compressed objects within 1 object stream

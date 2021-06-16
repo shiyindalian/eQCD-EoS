@@ -533,34 +533,6 @@
     pages = "054035",
     year = "2015"
 }
-@article{Nonaka:2020crv,
-    author = "Nonaka, Toshihiro",
-    editor = "Liu, Feng and Wang, Enke and Wang, Xin-Nian and Xu, Nu and Zhang, Ben-Wei",
-    collaboration = "STAR",
-    title = "{Measurement of the Sixth-Order Cumulant of Net-Proton Distributions in Au+Au Collisions from the STAR Experiment}",
-    eprint = "2002.12505",
-    archivePrefix = "arXiv",
-    primaryClass = "nucl-ex",
-    doi = "10.1016/j.nuclphysa.2020.121882",
-    journal = "Nucl. Phys. A",
-    volume = "1005",
-    pages = "121882",
-    year = "2021"
-}
-@article{Pandav:2020uzx,
-    author = "Pandav, Ashish",
-    editor = "Liu, Feng and Wang, Enke and Wang, Xin-Nian and Xu, Nu and Zhang, Ben-Wei",
-    collaboration = "STAR",
-    title = "{Measurement of cumulants of conserved charge multiplicity distributions in Au+Au collisions from the STAR experiment}",
-    eprint = "2003.12503",
-    archivePrefix = "arXiv",
-    primaryClass = "nucl-ex",
-    doi = "10.1016/j.nuclphysa.2020.121936",
-    journal = "Nucl. Phys. A",
-    volume = "1005",
-    pages = "121936",
-    year = "2021"
-}
 @article{Pawlowski:2005xe,
     author = "Pawlowski, Jan M.",
     title = "{Aspects of the functional renormalisation group}",
